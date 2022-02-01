@@ -1,0 +1,14 @@
+---
+title: "Estatistica da Qualidade"
+output: html_document
+---
+
+
+
+Bom dia / Boa tarde / Boa Noite, 
+
+Esta é a página principal do site da disciplina Estatística da Qualidade IME05-06251.
+
+Aqui vocês vão encontrar alguns dos exemplos apresentados em aula, com uso do R. O objetivo é mostrar as possibilidades de aplicação do R nesta disciplina.
+
+Por enquanto são poucos exemplos, espero ao longo do tempo ir populando com outras demonstrações.  

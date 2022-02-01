@@ -1,0 +1,200 @@
+---
+title: "Modelando a qualidade de processos"
+subtitle: "Estatística da Qualidade"
+author: "Ricardo Accioly"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
+knitr::opts_chunk$set(fig.width = 6, fig.retina = 3, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+```
+
+
+
+# Estatística da Qualidade (EQ)
+
+--
+
+Nesta apresentação vamos ver passo a passo como foram construídos os exemplos apresentados em aula.
+
+--
+
+Vamos utilizar o pacote `tidyverse` que carrega diversos outros pacotes, entre eles o `ggplot2` que permite a contrução de diversos gráficos 
+
+--
+
+Vamos gerar variáveis aleatórias (v.a.) normais através de `rnorm` e ver que tipo de análise é comum em EQ.
+
+--
+
+
+---
+class: inverse, middle, center
+
+
+# Gráfico de Corrida (Run Chart)
+
+
+
+
+<!-- get a flipbook version of the my_cars code chunk - pauses are where parentheses are balanced -->
+---
+
+`r chunk_reveal("ex_1")`
+
+```{r ex_1, include = FALSE}
+set.seed(2020)
+options(digits = 4)
+y <- rnorm(30, 10, 1)
+x <- seq(1, 30, 1)
+dados <- data.frame(y, x)
+ggplot(data = dados) +
+  geom_point(aes(x = x, y = y), size = 3) +
+  geom_abline(aes(slope = 0, intercept = 10)) + 
+  scale_y_continuous(limits = c(6, 14))
+```
+
+---
+class: inverse, middle, center
+
+
+# Histograma
+
+
+---
+
+
+`r chunk_reveal("ex_2")`
+
+```{r ex_2, include = FALSE}
+hist(dados$y, breaks = "Sturges", main = "Sturges")
+```
+
+---
+
+`r chunk_reveal("ex_3")`
+
+```{r ex_3, include = FALSE}
+hist(dados$y, breaks = "FD", main = "Freedman e Diaconis")
+```
+
+---
+
+`r chunk_reveal("ex_4")`
+
+```{r ex_4, include = FALSE}
+hist(dados$y, breaks = "Scott", main = "Scott")
+```
+
+
+---
+
+`r chunk_reveal("ex_5")`
+
+```{r ex_5, include = FALSE}
+hist(dados$y, probability = TRUE, main = "Histograma com densidade")
+lines(density(dados$y, bw="SJ"))
+rug(dados$y)
+```
+
+
+---
+
+class: inverse, center, middle
+
+
+# Quantil-Quantil Teórico
+
+---
+
+`r chunk_reveal("ex_6")`
+
+```{r ex_6, include = FALSE}
+qqnorm(dados$y, xlab="Quantis Teóricos", ylab="Quantis da Amostra", 
+       main="Gráfico QQ Normal")
+qqline(dados$y)
+```
+
+
+
+---
+
+class: inverse, center, middle
+
+
+# Vamos criar 3 conjuntos de v.a. normais atribuindo cada um deles a uma máquina, analisando o comportamento com boxplots
+
+
+---
+
+
+`r chunk_reveal("ex_7")`
+
+```{r ex_7, include = FALSE}
+set.seed(2022)
+y1 <- rnorm(30, 10, 1)
+x1 <- rep("maq1", 30)
+y2 <- rnorm(30, 9, 2)
+x2 <- rep("maq2", 30) 
+y3 <- rnorm(30, 11, 1.5)
+x3 <- rep("maq3", 30)
+y <- c(y1, y2, y3)
+x <- c(x1, x2, x3)
+
+dados <- data.frame(y , x)
+boxplot(dados$y ~ dados$x)
+```
+
+
+---
+
+`r chunk_reveal("ex_8")`
+
+```{r ex_8, include = FALSE}
+ggplot(dados, aes(x , y)) + 
+  geom_boxplot() +
+  geom_jitter(width = 0.5, alpha = 0.2)
+```
+
+
+
+
+<!-- adjust font size in this css code chunk, currently 80 -->
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+```
+
+
+

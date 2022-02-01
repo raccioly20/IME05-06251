@@ -1,0 +1,11 @@
+---
+title: "Estatistica da Qualidade"
+output:   
+  html_document: 
+    df_print: paged
+---
+
+
+* [Arquivo 1](content/slides01/index.html)  
+* [Arquivo 2](content/slide02/index.html)  
+* [Arquivo 3](content/slide03/index.html)
