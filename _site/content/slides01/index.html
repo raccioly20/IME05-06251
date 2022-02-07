@@ -76,7 +76,7 @@ count: false
 
 ```r
 set.seed(2020)
-*options(digits = 4)
+*options(digits = 5)
 ```
 ]
  
@@ -92,7 +92,7 @@ count: false
 
 ```r
 set.seed(2020)
-options(digits = 4)
+options(digits = 5)
 *y &lt;- rnorm(30, 10, 1)
 ```
 ]
@@ -109,7 +109,7 @@ count: false
 
 ```r
 set.seed(2020)
-options(digits = 4)
+options(digits = 5)
 y &lt;- rnorm(30, 10, 1)
 *x &lt;- seq(1, 30, 1)
 ```
@@ -127,7 +127,7 @@ count: false
 
 ```r
 set.seed(2020)
-options(digits = 4)
+options(digits = 5)
 y &lt;- rnorm(30, 10, 1)
 x &lt;- seq(1, 30, 1)
 *dados &lt;- data.frame(y, x)
@@ -146,7 +146,7 @@ count: false
 
 ```r
 set.seed(2020)
-options(digits = 4)
+options(digits = 5)
 y &lt;- rnorm(30, 10, 1)
 x &lt;- seq(1, 30, 1)
 dados &lt;- data.frame(y, x)
@@ -166,7 +166,7 @@ count: false
 
 ```r
 set.seed(2020)
-options(digits = 4)
+options(digits = 5)
 y &lt;- rnorm(30, 10, 1)
 x &lt;- seq(1, 30, 1)
 dados &lt;- data.frame(y, x)
@@ -187,7 +187,7 @@ count: false
 
 ```r
 set.seed(2020)
-options(digits = 4)
+options(digits = 5)
 y &lt;- rnorm(30, 10, 1)
 x &lt;- seq(1, 30, 1)
 dados &lt;- data.frame(y, x)
@@ -209,7 +209,7 @@ count: false
 
 ```r
 set.seed(2020)
-options(digits = 4)
+options(digits = 5)
 y &lt;- rnorm(30, 10, 1)
 x &lt;- seq(1, 30, 1)
 dados &lt;- data.frame(y, x)
@@ -490,8 +490,7 @@ lines(density(dados$y, bw="SJ"))
 
 class: inverse, center, middle
 
-
-# Quantil-Quantil Teórico
+# Quantis de distribuição
 
 ---
 
@@ -501,13 +500,12 @@ count: false
 .panel1-ex_6-auto[
 
 ```r
-*qqnorm(dados$y, xlab="Quantis Teóricos", ylab="Quantis da Amostra",
-*      main="Gráfico QQ Normal")
+*x &lt;-  seq(0.1, 0.9, 0.05)
 ```
 ]
  
 .panel2-ex_6-auto[
-&lt;img src="index_files/figure-html/ex_6_auto_01_output-1.png" width="432" /&gt;
+
 ]
 
 ---
@@ -517,14 +515,43 @@ count: false
 .panel1-ex_6-auto[
 
 ```r
-qqnorm(dados$y, xlab="Quantis Teóricos", ylab="Quantis da Amostra",
-       main="Gráfico QQ Normal")
-*qqline(dados$y)
+x &lt;-  seq(0.1, 0.9, 0.05)
+*x 
 ```
 ]
  
 .panel2-ex_6-auto[
-&lt;img src="index_files/figure-html/ex_6_auto_02_output-1.png" width="432" /&gt;
+
+```
+ [1] 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80
+[16] 0.85 0.90
+```
+]
+
+---
+count: false
+ 
+
+.panel1-ex_6-auto[
+
+```r
+x &lt;-  seq(0.1, 0.9, 0.05)
+x
+*qnorm(x, 10, 1)
+```
+]
+ 
+.panel2-ex_6-auto[
+
+```
+ [1] 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80
+[16] 0.85 0.90
+```
+
+```
+ [1]  8.7184  8.9636  9.1584  9.3255  9.4756  9.6147  9.7467  9.8743 10.0000
+[10] 10.1257 10.2533 10.3853 10.5244 10.6745 10.8416 11.0364 11.2816
+```
 ]
 
 &lt;style&gt;
@@ -558,18 +585,13 @@ qqnorm(dados$y, xlab="Quantis Teóricos", ylab="Quantis da Amostra",
 
 
 
-
-
 ---
 
 class: inverse, center, middle
 
-
-# Vamos criar 3 conjuntos de v.a. normais atribuindo cada um deles a uma máquina, analisando o comportamento com boxplots
-
+# Quantil-Quantil Teórico
 
 ---
-
 
 count: false
  
@@ -577,12 +599,13 @@ count: false
 .panel1-ex_7-auto[
 
 ```r
-*set.seed(2022)
+*qqnorm(dados$y, xlab="Quantis Teóricos", ylab="Quantis da Amostra",
+*      main="Gráfico QQ Normal")
 ```
 ]
  
 .panel2-ex_7-auto[
-
+&lt;img src="index_files/figure-html/ex_7_auto_01_output-1.png" width="432" /&gt;
 ]
 
 ---
@@ -592,204 +615,14 @@ count: false
 .panel1-ex_7-auto[
 
 ```r
-set.seed(2022)
-*y1 &lt;- rnorm(30, 10, 1)
+qqnorm(dados$y, xlab="Quantis Teóricos", ylab="Quantis da Amostra",
+       main="Gráfico QQ Normal")
+*qqline(dados$y)
 ```
 ]
  
 .panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-*x1 &lt;- rep("maq1", 30)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-*y2 &lt;- rnorm(30, 9, 2)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-y2 &lt;- rnorm(30, 9, 2)
-*x2 &lt;- rep("maq2", 30)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-y2 &lt;- rnorm(30, 9, 2)
-x2 &lt;- rep("maq2", 30)
-*y3 &lt;- rnorm(30, 11, 1.5)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-y2 &lt;- rnorm(30, 9, 2)
-x2 &lt;- rep("maq2", 30)
-y3 &lt;- rnorm(30, 11, 1.5)
-*x3 &lt;- rep("maq3", 30)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-y2 &lt;- rnorm(30, 9, 2)
-x2 &lt;- rep("maq2", 30)
-y3 &lt;- rnorm(30, 11, 1.5)
-x3 &lt;- rep("maq3", 30)
-*y &lt;- c(y1, y2, y3)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-y2 &lt;- rnorm(30, 9, 2)
-x2 &lt;- rep("maq2", 30)
-y3 &lt;- rnorm(30, 11, 1.5)
-x3 &lt;- rep("maq3", 30)
-y &lt;- c(y1, y2, y3)
-*x &lt;- c(x1, x2, x3)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-y2 &lt;- rnorm(30, 9, 2)
-x2 &lt;- rep("maq2", 30)
-y3 &lt;- rnorm(30, 11, 1.5)
-x3 &lt;- rep("maq3", 30)
-y &lt;- c(y1, y2, y3)
-x &lt;- c(x1, x2, x3)
-
-*dados &lt;- data.frame(y , x)
-```
-]
- 
-.panel2-ex_7-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-ex_7-auto[
-
-```r
-set.seed(2022)
-y1 &lt;- rnorm(30, 10, 1)
-x1 &lt;- rep("maq1", 30)
-y2 &lt;- rnorm(30, 9, 2)
-x2 &lt;- rep("maq2", 30)
-y3 &lt;- rnorm(30, 11, 1.5)
-x3 &lt;- rep("maq3", 30)
-y &lt;- c(y1, y2, y3)
-x &lt;- c(x1, x2, x3)
-
-dados &lt;- data.frame(y , x)
-*boxplot(dados$y ~ dados$x)
-```
-]
- 
-.panel2-ex_7-auto[
-&lt;img src="index_files/figure-html/ex_7_auto_11_output-1.png" width="432" /&gt;
+&lt;img src="index_files/figure-html/ex_7_auto_02_output-1.png" width="432" /&gt;
 ]
 
 &lt;style&gt;
@@ -826,18 +659,27 @@ dados &lt;- data.frame(y , x)
 
 ---
 
+class: inverse, center, middle
+
+
+# Vamos criar 3 conjuntos de v.a. normais atribuindo cada um deles a uma máquina, analisando o comportamento com boxplots
+
+
+---
+
+
 count: false
  
 
 .panel1-ex_8-auto[
 
 ```r
-*ggplot(dados, aes(x , y))
+*set.seed(2022)
 ```
 ]
  
 .panel2-ex_8-auto[
-&lt;img src="index_files/figure-html/ex_8_auto_01_output-1.png" width="432" /&gt;
+
 ]
 
 ---
@@ -847,13 +689,13 @@ count: false
 .panel1-ex_8-auto[
 
 ```r
-ggplot(dados, aes(x , y)) +
-* geom_boxplot()
+set.seed(2022)
+*y1 &lt;- rnorm(30, 10, 1)
 ```
 ]
  
 .panel2-ex_8-auto[
-&lt;img src="index_files/figure-html/ex_8_auto_02_output-1.png" width="432" /&gt;
+
 ]
 
 ---
@@ -863,14 +705,188 @@ count: false
 .panel1-ex_8-auto[
 
 ```r
-ggplot(dados, aes(x , y)) +
-  geom_boxplot() +
-* geom_jitter(width = 0.5, alpha = 0.2)
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+*x1 &lt;- rep("maq1", 30)
 ```
 ]
  
 .panel2-ex_8-auto[
-&lt;img src="index_files/figure-html/ex_8_auto_03_output-1.png" width="432" /&gt;
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+*y2 &lt;- rnorm(30, 9, 2)
+```
+]
+ 
+.panel2-ex_8-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+y2 &lt;- rnorm(30, 9, 2)
+*x2 &lt;- rep("maq2", 30)
+```
+]
+ 
+.panel2-ex_8-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+y2 &lt;- rnorm(30, 9, 2)
+x2 &lt;- rep("maq2", 30)
+*y3 &lt;- rnorm(30, 11, 1.5)
+```
+]
+ 
+.panel2-ex_8-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+y2 &lt;- rnorm(30, 9, 2)
+x2 &lt;- rep("maq2", 30)
+y3 &lt;- rnorm(30, 11, 1.5)
+*x3 &lt;- rep("maq3", 30)
+```
+]
+ 
+.panel2-ex_8-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+y2 &lt;- rnorm(30, 9, 2)
+x2 &lt;- rep("maq2", 30)
+y3 &lt;- rnorm(30, 11, 1.5)
+x3 &lt;- rep("maq3", 30)
+*y &lt;- c(y1, y2, y3)
+```
+]
+ 
+.panel2-ex_8-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+y2 &lt;- rnorm(30, 9, 2)
+x2 &lt;- rep("maq2", 30)
+y3 &lt;- rnorm(30, 11, 1.5)
+x3 &lt;- rep("maq3", 30)
+y &lt;- c(y1, y2, y3)
+*x &lt;- c(x1, x2, x3)
+```
+]
+ 
+.panel2-ex_8-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+y2 &lt;- rnorm(30, 9, 2)
+x2 &lt;- rep("maq2", 30)
+y3 &lt;- rnorm(30, 11, 1.5)
+x3 &lt;- rep("maq3", 30)
+y &lt;- c(y1, y2, y3)
+x &lt;- c(x1, x2, x3)
+
+*dados &lt;- data.frame(y , x)
+```
+]
+ 
+.panel2-ex_8-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-ex_8-auto[
+
+```r
+set.seed(2022)
+y1 &lt;- rnorm(30, 10, 1)
+x1 &lt;- rep("maq1", 30)
+y2 &lt;- rnorm(30, 9, 2)
+x2 &lt;- rep("maq2", 30)
+y3 &lt;- rnorm(30, 11, 1.5)
+x3 &lt;- rep("maq3", 30)
+y &lt;- c(y1, y2, y3)
+x &lt;- c(x1, x2, x3)
+
+dados &lt;- data.frame(y , x)
+*boxplot(dados$y ~ dados$x)
+```
+]
+ 
+.panel2-ex_8-auto[
+&lt;img src="index_files/figure-html/ex_8_auto_11_output-1.png" width="432" /&gt;
 ]
 
 &lt;style&gt;
@@ -891,6 +907,87 @@ ggplot(dados, aes(x , y)) +
   font-size: 80%
 }
 .panel3-ex_8-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+
+---
+
+count: false
+ 
+
+.panel1-ex_9-auto[
+
+```r
+*ggplot(dados, aes(x , y))
+```
+]
+ 
+.panel2-ex_9-auto[
+&lt;img src="index_files/figure-html/ex_9_auto_01_output-1.png" width="432" /&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-ex_9-auto[
+
+```r
+ggplot(dados, aes(x , y)) +
+* geom_boxplot()
+```
+]
+ 
+.panel2-ex_9-auto[
+&lt;img src="index_files/figure-html/ex_9_auto_02_output-1.png" width="432" /&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-ex_9-auto[
+
+```r
+ggplot(dados, aes(x , y)) +
+  geom_boxplot() +
+* geom_jitter(width = 0.5, alpha = 0.2)
+```
+]
+ 
+.panel2-ex_9-auto[
+&lt;img src="index_files/figure-html/ex_9_auto_03_output-1.png" width="432" /&gt;
+]
+
+&lt;style&gt;
+.panel1-ex_9-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-ex_9-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-ex_9-auto {
   color: black;
   width: NA%;
   hight: 33%;
