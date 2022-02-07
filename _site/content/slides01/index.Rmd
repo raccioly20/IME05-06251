@@ -122,9 +122,9 @@ class: inverse, center, middle
 `r chunk_reveal("ex_6")`
 
 ```{r ex_6, include = FALSE}
-x <-  seq(0.1, 0.9, 0.05)
-x
-qnorm(x, 10, 1)
+p <-  seq(0.1, 0.9, 0.05)
+p
+qnorm(p, 10, 1)
 ```
 
 ---
